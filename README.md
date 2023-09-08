@@ -1,5 +1,5 @@
 # spring-security
-Basic spring security source code is basic, everyone can refer to it
+Basic spring security source code, everyone can refer to it
 
 
 ## Getting started
