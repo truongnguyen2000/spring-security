@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-
+   
     stages {
         stage('Checkout') {
             steps {
@@ -9,9 +9,16 @@ pipeline {
             }
         }
 
+         stage('Log info') {
+            steps {
+                sh 'mvn --version'
+                sh 'java --version'
+            }
+        }
+
         stage('Build') {
             steps {
-                sh 'mvn install'
+                sh 'mvn clean package'
             }
         }
 
