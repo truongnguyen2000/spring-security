@@ -1,0 +1,10 @@
+version: "3"
+services:
+  restapi-service:
+    image: com.truong/restapi.RELEASE:1.0.1
+    ports:
+      - "9002:9002"
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: ./Dockerfile

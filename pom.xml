@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.truong</groupId>
+	<artifactId>com.truong</artifactId>
+	<version>1.0.1.RELEASE</version>
+	<packaging>pom</packaging>
+
+	<name>com.truong</name>
+	<description>test</description>
+
+	<properties>
+		<java.version>17</java.version>
+		<hibernate.version>5.3.7.Final</hibernate.version>
+		<jackson.library>2.9.8</jackson.library>
+		<maven.compiler.plugin.version>3.3.9</maven.compiler.plugin.version>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<spring-data-jpa.version>2.2.0.RELEASE</spring-data-jpa.version>
+		<spring-boot-maven-plugin.version>2.2.6.RELEASE</spring-boot-maven-plugin.version>
+		<spring.version>5.2.25.RELEASE</spring.version>
+		<spring-boot.version>2.7.14</spring-boot.version>
+		
+	</properties>
+
+	<modules>
+		<module>com.truong.oauth</module>
+		<module>com.truong.restapi</module>
+		<module>com.truong.entity</module>
+		<module>com.truong.service</module>
+		<module>com.truong.dao</module>
+		<module>com.truong.configuration</module>
+		<module>com.truong.common</module>
+		<module>com.truong.kafka</module>
+	</modules>
+	
+	  <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+</project>
+

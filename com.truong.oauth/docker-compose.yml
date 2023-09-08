@@ -1,0 +1,10 @@
+version: "3"
+services:
+  oauth-service:
+    image: com.truong/oauth.RELEASE:1.0.1
+    ports:
+      - "9001:9001"
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: ./Dockerfile
