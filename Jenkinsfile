@@ -17,9 +17,9 @@ pipeline {
             steps {
                 sh 'echo $JAVA_HOME'
                 sh 'echo $MAVEN_HOME'
-                
-                sh 'mvn --version'
                 sh 'java --version'
+                sh 'mvn --version'
+                
             }
         }
 
