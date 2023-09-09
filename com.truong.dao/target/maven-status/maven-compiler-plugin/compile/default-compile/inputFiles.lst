@@ -1,5 +1,5 @@
-/home/truong/Music/my-gitlab/spring-security/com.truong.dao/src/main/java/com/truong/dao/PostDao.java
-/home/truong/Music/my-gitlab/spring-security/com.truong.dao/src/main/java/com/truong/dao/impl/EmployeeDaoImpl.java
-/home/truong/Music/my-gitlab/spring-security/com.truong.dao/src/main/java/com/truong/dao/EmployeeDao.java
-/home/truong/Music/my-gitlab/spring-security/com.truong.dao/src/main/java/com/truong/dao/impl/PostDaoImpl.java
-/home/truong/Music/my-gitlab/spring-security/com.truong.dao/src/main/java/com/truong/dao/AbstractDao.java
+/home/truong/Videos/git/spring-security/com.truong.dao/src/main/java/com/truong/dao/EmployeeDao.java
+/home/truong/Videos/git/spring-security/com.truong.dao/src/main/java/com/truong/dao/PostDao.java
+/home/truong/Videos/git/spring-security/com.truong.dao/src/main/java/com/truong/dao/AbstractDao.java
+/home/truong/Videos/git/spring-security/com.truong.dao/src/main/java/com/truong/dao/impl/EmployeeDaoImpl.java
+/home/truong/Videos/git/spring-security/com.truong.dao/src/main/java/com/truong/dao/impl/PostDaoImpl.java

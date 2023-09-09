@@ -1,5 +1,5 @@
-/home/truong/Music/my-gitlab/spring-security/com.truong.common/src/main/java/com/truong/common/utils/HttpClientService.java
-/home/truong/Music/my-gitlab/spring-security/com.truong.common/src/main/java/com/truong/common/exception/GlobalExceptionHandler.java
-/home/truong/Music/my-gitlab/spring-security/com.truong.common/src/main/java/com/truong/common/utils/Utils.java
-/home/truong/Music/my-gitlab/spring-security/com.truong.common/src/main/java/com/truong/common/utils/BaseResponse.java
-/home/truong/Music/my-gitlab/spring-security/com.truong.common/src/main/java/com/truong/common/exception/CustomException.java
+/home/truong/Videos/git/spring-security/com.truong.common/src/main/java/com/truong/common/utils/BaseResponse.java
+/home/truong/Videos/git/spring-security/com.truong.common/src/main/java/com/truong/common/exception/CustomException.java
+/home/truong/Videos/git/spring-security/com.truong.common/src/main/java/com/truong/common/utils/HttpClientService.java
+/home/truong/Videos/git/spring-security/com.truong.common/src/main/java/com/truong/common/utils/Utils.java
+/home/truong/Videos/git/spring-security/com.truong.common/src/main/java/com/truong/common/exception/GlobalExceptionHandler.java
