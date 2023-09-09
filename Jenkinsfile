@@ -15,6 +15,7 @@ pipeline {
 
          stage('Log info') {
             steps {
+                sh 'echo $JAVA_HOME'
                 sh 'mvn --version'
                 sh 'java --version'
             }
