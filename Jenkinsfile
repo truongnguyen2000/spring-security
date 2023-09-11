@@ -27,7 +27,8 @@ pipeline {
         stage('Build and Deploy Module 1') {
             steps {
                 dir('com.truong.oauth') {
-                    sh 'docker compose -f docker-compose.yml up --build -d'
+                    // sh 'docker compose -f docker-compose.yml up --build -d'
+                    sh 'java -jar target/com.truong.oauth-1.0.1.RELEASE.jar'
                 }
             }
         }
@@ -35,7 +36,8 @@ pipeline {
         stage('Build and Deploy Module 2') {
             steps {
                 dir('com.truong.restapi') {
-                   sh 'docker compose -f docker-compose.yml up --build -d'
+                //    sh 'docker compose -f docker-compose.yml up --build -d'
+                sh 'java -jar target/com.truong.restapi-1.0.1.RELEASE.jar'
                 }
             }
         }
