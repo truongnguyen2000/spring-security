@@ -25,7 +25,7 @@ public class KafkaConsumer {
 			Post post = new Post();
 			post.setTitle("Ghi log login");
 			post.setContent(String.format("login token là %s", data.getAccessToken() ));
-			postService.create(post);
+//			postService.create(post);
 		}
 		
 		
