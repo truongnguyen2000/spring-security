@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.truong.common.exception.CustomException;
 import com.truong.dao.PostDao;
 import com.truong.entity.Post;
 import com.truong.service.PostService;
@@ -32,8 +33,8 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public List<Post> findAll() {
-		return dao.findAll();
+	public List<Post> findAll(int status) throws Exception {
+		return dao.findAll(status);
 	}
 
 }

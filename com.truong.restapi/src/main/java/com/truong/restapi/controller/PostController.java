@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.truong.common.exception.CustomException;
@@ -87,7 +88,9 @@ public class PostController extends BaseController {
 	}
 
 	@GetMapping("")
-	public ResponseEntity<BaseResponse<List<PostResponse>>> getAll() throws CustomException {
+	public ResponseEntity<BaseResponse<List<PostResponse>>> getAll(
+			@RequestParam(name = "status", defaultValue = "-1") int status
+			) throws Exception {
 
 		BaseResponse<List<PostResponse>> respponse = new BaseResponse<>();
 
@@ -97,7 +100,7 @@ public class PostController extends BaseController {
 			return new ResponseEntity<>(respponse, HttpStatus.OK);
 		}
 
-		respponse.setData(new PostResponse().mapToList(postService.findAll()));
+		respponse.setData(new PostResponse().mapToList(postService.findAll(status)));
 
 		return new ResponseEntity<>(respponse, HttpStatus.OK);
 

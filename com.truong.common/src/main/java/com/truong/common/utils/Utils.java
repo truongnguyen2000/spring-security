@@ -1,6 +1,8 @@
 package com.truong.common.utils;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -38,6 +40,14 @@ public class Utils {
 		ObjectMapper mapper = new ObjectMapper();
 		String result = mapper.writeValueAsString(data);
 		return result;
+	}
+	
+	public static String getDatetimeString(Date date) {
+		if (date == null) {
+			return "";
+		} else {
+			return (new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date));
+		}
 	}
 
 }

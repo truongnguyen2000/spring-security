@@ -23,6 +23,8 @@ public class Post {
 	@Column(name = "employee_id")
 	private int employeeId;
 
+	private boolean status;
+	
 	public int getId() {
 		return id;
 	}
@@ -53,6 +55,14 @@ public class Post {
 
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 	

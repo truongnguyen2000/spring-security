@@ -53,10 +53,10 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         return new JdbcTokenStore(dataSource);
     }
     
-//    @Bean
-//    public TokenEnhancer tokenEnhancer() {
-//        return new CustomTokenEnhancer();
-//    }
+    @Bean
+    public TokenEnhancer tokenEnhancer() {
+        return new CustomTokenEnhancer();
+    }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {

@@ -2,6 +2,7 @@ package com.truong.dao;
 
 import java.util.List;
 
+import com.truong.common.exception.CustomException;
 import com.truong.entity.Post;
 
 public interface PostDao {
@@ -12,5 +13,5 @@ public interface PostDao {
 	
 	public Post findOne(int id);
 	
-	public List<Post> findAll();
+	public List<Post> findAll(int status) throws Exception;
 }
