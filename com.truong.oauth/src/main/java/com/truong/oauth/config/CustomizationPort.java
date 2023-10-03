@@ -7,6 +7,12 @@ import org.springframework.stereotype.Component;
 
 import com.truong.configuration.ApplicationPropertieConfig;
 
+
+/**	
+ * @author Truong
+ *
+ * 3 Oct 2023
+ */
 @Component
 public class CustomizationPort implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {
 

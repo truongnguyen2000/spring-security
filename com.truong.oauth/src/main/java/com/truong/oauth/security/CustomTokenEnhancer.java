@@ -8,6 +8,12 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import java.util.Calendar;
 import java.util.Date;
 
+
+/**	
+ * @author Truong
+ *
+ * 3 Oct 2023
+ */
 public class CustomTokenEnhancer implements TokenEnhancer {
 
     @Override

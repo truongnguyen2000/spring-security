@@ -20,6 +20,12 @@ import com.truong.configuration.ApplicationPropertieConfig;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+
+/**	
+ * @author Truong
+ *
+ * 3 Oct 2023
+ */
 @Configuration
 @ComponentScan("com.truong")
 @EnableTransactionManagement
