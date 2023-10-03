@@ -24,12 +24,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.truong.common.utils.BaseResponse;
 import com.truong.common.utils.Utils;
 
-
-/**	
- * @author Truong
- *
- * 3 Oct 2023
- */
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 

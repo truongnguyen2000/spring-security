@@ -2,12 +2,6 @@ package com.truong.common.exception;
 
 import org.springframework.http.HttpStatus;
 
-
-/**	
- * @author Truong
- *
- * 3 Oct 2023
- */
 public class CustomException extends Exception  {
 	
 	static final long serialVersionUID = -3387516993124229948L;

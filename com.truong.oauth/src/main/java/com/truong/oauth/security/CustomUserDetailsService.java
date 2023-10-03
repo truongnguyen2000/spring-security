@@ -19,12 +19,6 @@ import com.truong.entity.Employee;
 import com.truong.entity.MediiUser;
 import com.truong.service.EmployeeService;
 
-
-/**	
- * @author Truong
- *
- * 3 Oct 2023
- */
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 

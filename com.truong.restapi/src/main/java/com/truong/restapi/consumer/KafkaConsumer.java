@@ -10,12 +10,6 @@ import com.truong.entity.Post;
 import com.truong.restapi.response.Oauth2EndPointResponse;
 import com.truong.service.PostService;
 
-
-/**	
- * @author Truong
- *
- * 3 Oct 2023
- */
 @Service
 public class KafkaConsumer {
 
