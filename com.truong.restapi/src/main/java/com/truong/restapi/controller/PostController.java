@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.truong.common.exception.CustomException;
 import com.truong.common.utils.BaseResponse;
+import com.truong.common.utils.StringValue;
 import com.truong.entity.Employee;
 import com.truong.entity.Post;
 import com.truong.restapi.request.PostRequest;
@@ -72,7 +73,7 @@ public class PostController extends BaseController {
 
 		if (post == null) {
 			respponse.setStatus(HttpStatus.BAD_REQUEST);
-			respponse.setMessageError("Bài viết không tồn tại");
+			respponse.setMessageError(StringValue.POST_IS_NOT_EXIST);
 			return new ResponseEntity<>(respponse, HttpStatus.OK);
 		}
 
@@ -122,7 +123,7 @@ public class PostController extends BaseController {
 
 		if (post == null) {
 			respponse.setStatus(HttpStatus.BAD_REQUEST);
-			respponse.setMessageError("Bài viết không tồn tại");
+			respponse.setMessageError(StringValue.POST_IS_NOT_EXIST);
 			return new ResponseEntity<>(respponse, HttpStatus.OK);
 		}
 
