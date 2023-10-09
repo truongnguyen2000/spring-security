@@ -14,4 +14,6 @@ public interface PostDao {
 	public Post findOne(int id);
 	
 	public List<Post> findAll(int status) throws Exception;
+
+	public Post spCreatePost(Post post) throws Exception;
 }

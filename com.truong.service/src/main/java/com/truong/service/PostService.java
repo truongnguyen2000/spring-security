@@ -9,6 +9,8 @@ public interface PostService {
 	
 	public Post create(Post post);
 	
+	public Post spCreatePost(Post post) throws Exception;
+	
 	public void update(Post post);
 	
 	public Post findOne(int id);

@@ -37,4 +37,9 @@ public class PostServiceImpl implements PostService{
 		return dao.findAll(status);
 	}
 
+	@Override
+	public Post spCreatePost(Post post) throws Exception {
+		return dao.spCreatePost(post);
+	}
+
 }

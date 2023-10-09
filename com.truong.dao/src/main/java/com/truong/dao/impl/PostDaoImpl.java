@@ -74,5 +74,31 @@ public class PostDaoImpl extends AbstractDao<Integer, Post> implements PostDao{
 		}
 	}
 
+	@Override
+	public Post spCreatePost(Post post) throws Exception {
+		StoredProcedureQuery query = this.getSession().createStoredProcedureQuery("sp_create_post", Post.class)
+				.registerStoredProcedureParameter("title", String.class, ParameterMode.IN)
+				.registerStoredProcedureParameter("content", String.class, ParameterMode.IN)
+				.registerStoredProcedureParameter("employeeId", Integer.class, ParameterMode.IN)
+				.registerStoredProcedureParameter("status_code", Integer.class, ParameterMode.OUT)
+				.registerStoredProcedureParameter("message_error", String.class, ParameterMode.OUT);
+
+		query.setParameter("title", post.getTitle());
+		query.setParameter("content", post.getContent());
+		query.setParameter("employeeId", post.getEmployeeId());
+
+		int statusCode = (int) query.getOutputParameterValue("status_code");
+		String messageError = query.getOutputParameterValue("message_error").toString();
+
+		switch (StoreProcedureStatusCodeEnum.valueOf(statusCode)) {
+		case SUCCESS:
+			return (Post) query.getResultList().stream().findFirst().orElse(null);
+		case INPUT_INVALID:
+			throw new CustomException(HttpStatus.BAD_REQUEST, messageError);
+		default:
+			throw new Exception(messageError);
+		}
+	}
+
 	
 }
