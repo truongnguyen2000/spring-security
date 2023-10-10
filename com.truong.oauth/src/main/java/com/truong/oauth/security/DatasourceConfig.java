@@ -82,7 +82,7 @@ public class DatasourceConfig {
 	}
 
 //	/*
-//	 * Scan entity để sử dụng JPA Nếu không sẽ gặp lỗi not an entity
+//	 * Bật lên sẽ bị lỗi xung đột jpa và hibernate
 //	 */
 ////	@Bean
 ////	@Primary
