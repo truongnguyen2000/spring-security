@@ -42,7 +42,7 @@ public class PostDaoImpl extends AbstractDao<Integer, Post> implements PostDao{
 	}
 
 	@Override
-	public List<Post> findAll(int status) throws Exception{
+	public List<Post> findAll(int employeeId, int status) throws Exception{
 //		CriteriaQuery<Post> criteria = this.getBuilder().createQuery(Post.class);
 //		Root<Post> root = criteria.from(Post.class);
 //		List<Predicate> predicates = new ArrayList<Predicate>();
@@ -55,10 +55,12 @@ public class PostDaoImpl extends AbstractDao<Integer, Post> implements PostDao{
 		
 		
 		StoredProcedureQuery query = this.getSession().createStoredProcedureQuery("sp_get_posts", Post.class)
+				.registerStoredProcedureParameter("employeeId", Integer.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("status", Integer.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("status_code", Integer.class, ParameterMode.OUT)
 				.registerStoredProcedureParameter("message_error", String.class, ParameterMode.OUT);
 
+		query.setParameter("employeeId", employeeId);
 		query.setParameter("status", status);
 
 		int statusCode = (int) query.getOutputParameterValue("status_code");

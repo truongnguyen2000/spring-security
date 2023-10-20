@@ -90,6 +90,7 @@ public class PostController extends BaseController {
 
 	@GetMapping("")
 	public ResponseEntity<BaseResponse<List<PostResponse>>> getAll(
+			@RequestParam(name = "employee_id", defaultValue = "-1") int employeeId,
 			@RequestParam(name = "status", defaultValue = "-1") int status
 			) throws Exception {
 
@@ -101,7 +102,7 @@ public class PostController extends BaseController {
 			return new ResponseEntity<>(respponse, HttpStatus.OK);
 		}
 
-		respponse.setData(new PostResponse().mapToList(postService.findAll(status)));
+		respponse.setData(new PostResponse().mapToList(postService.findAll(employeeId, status)));
 
 		return new ResponseEntity<>(respponse, HttpStatus.OK);
 

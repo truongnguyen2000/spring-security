@@ -15,5 +15,5 @@ public interface PostService {
 	
 	public Post findOne(int id);
 	
-	public List<Post> findAll(int status) throws Exception;
+	public List<Post> findAll(int employeeId, int status) throws Exception;
 }

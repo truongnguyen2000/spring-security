@@ -24,8 +24,6 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @ComponentScan("com.truong")
 @EnableTransactionManagement
-//@EnableJpaRepositories(basePackages = "com.truong.dao")
-//@EntityScan("com.truong.entity")
 @EnableAutoConfiguration(exclude=HibernateJpaAutoConfiguration.class)
 public class DatasourceConfig {
 
