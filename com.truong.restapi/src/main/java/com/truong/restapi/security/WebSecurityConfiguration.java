@@ -15,28 +15,30 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfiguration {
 
 	@Autowired
 	private DataSource dataSource;
 	
 	@Bean
-	public TokenStore tokenStore() {
+	TokenStore tokenStore() {
 		return new JdbcTokenStore(dataSource);
 	}
 	
 	@Bean
-	@Override
-	protected AuthenticationManager authenticationManager() throws Exception {
-		return super.authenticationManager();
-	}
-	
-	@Bean
 	@Primary 
-	public DefaultTokenServices tokenServices() {
+	DefaultTokenServices tokenServices() {
 		DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
 		defaultTokenServices.setTokenStore(tokenStore());
 		defaultTokenServices.setSupportRefreshToken(true);
 		return defaultTokenServices;
 	}
+	
+//	@Bean
+//	@Override
+//	protected AuthenticationManager authenticationManager() throws Exception {
+//		return super.authenticationManager();
+//	}
+	
+	
 }

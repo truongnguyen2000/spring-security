@@ -22,6 +22,12 @@
 			<version>${project.version}</version>
 		</dependency>
 		
+		<dependency>
+		    <groupId>com.truong</groupId>
+			<artifactId>com.truong.redis</artifactId>
+		    <version>${project.version}</version>
+		</dependency>
+		
 
 	</dependencies>
 

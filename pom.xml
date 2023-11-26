@@ -35,6 +35,7 @@
 		<module>com.truong.configuration</module>
 		<module>com.truong.common</module>
 		<module>com.truong.kafka</module>
+		<module>com.truong.redis</module>
 	</modules>
 	
 	  <dependencyManagement>

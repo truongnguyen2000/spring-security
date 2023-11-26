@@ -25,7 +25,7 @@ import com.truong.oauth.response.Oauth2EndPointResponse;
 
 @RestController
 @RequestMapping("api")
-public class AuthController extends BaseController{
+public class LoginController extends BaseController{
 
 	@Autowired
 	private ApplicationPropertieConfig config;
@@ -49,7 +49,7 @@ public class AuthController extends BaseController{
 		
 		
 		
-		kafkaService.sendMessage("login", Utils.convertObjectToJsonString(oauth2Response));
+		//kafkaService.sendMessage("login", Utils.convertObjectToJsonString(oauth2Response));
 		
 		response.setData(oauth2Response);
         

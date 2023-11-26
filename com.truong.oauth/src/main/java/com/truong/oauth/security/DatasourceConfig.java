@@ -1,6 +1,8 @@
 package com.truong.oauth.security;
 
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -11,14 +13,19 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.truong.configuration.ApplicationPropertieConfig;
+import com.truong.oauth.config.ReplicationRoutingDataSource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+
 
 @Configuration
 @ComponentScan("com.truong")
@@ -35,21 +42,69 @@ public class DatasourceConfig {
 	@Bean
 	void initSetting() {
 		System.out.println("=====Loading config=====");
-		System.out.println(String.format("Datasource url: %s", config.getDatasourceUrl()));
+		System.out.println(String.format("Datasource master url: %s", config.getDatasourceMasterUrl()));
+		System.out.println(String.format("Datasource slave url: %s", config.getDatasourceSlaveUrl()));
 		System.out.println("=====End=====");
 	}
 
+//	@Bean
+//	public DataSource dataSource() {
+//		HikariConfig hikariConfig = this.initHikariPoolingConfig("hikari-pool");
+//		hikariConfig.setJdbcUrl(config.getDatasourceUrl());
+//		hikariConfig.setUsername(config.getDatasourceUsername());
+//		hikariConfig.setPassword(config.getDatasourcePassword());
+//
+//		HikariDataSource hikariPoolingDataSource = new HikariDataSource(hikariConfig);
+//
+//		return hikariPoolingDataSource;
+//	}
+	
+	
 	@Bean
-	public DataSource dataSource() {
-		HikariConfig hikariConfig = this.initHikariPoolingConfig("hikari-pool");
-		hikariConfig.setJdbcUrl(config.getDatasourceUrl());
-		hikariConfig.setUsername(config.getDatasourceUsername());
-		hikariConfig.setPassword(config.getDatasourcePassword());
-
-		HikariDataSource hikariPoolingDataSource = new HikariDataSource(hikariConfig);
-
-		return hikariPoolingDataSource;
+	DataSource writeOnlyDataSource() {
+		HikariConfig hikariConfig = this.initHikariPoolingConfig("hikari-master-pool");
+		hikariConfig.setJdbcUrl(config.getDatasourceMasterUrl());
+		hikariConfig.setUsername(config.getDatasourceMasterUsername());
+		hikariConfig.setPassword(config.getDatasourceMasterPassword());
+		hikariConfig.setReadOnly(false);
+		
+		return new HikariDataSource(hikariConfig);
 	}
+	
+	@Bean
+	DataSource readOnlyDataSource() {
+		HikariConfig hikariConfig = this.initHikariPoolingConfig("hikari-slave-pool");
+		hikariConfig.setJdbcUrl(config.getDatasourceSlaveUrl());
+		hikariConfig.setUsername(config.getDatasourceSlaveUsername());
+		hikariConfig.setPassword(config.getDatasourceSlavePassword());
+		hikariConfig.setReadOnly(true);
+		
+		return new HikariDataSource(hikariConfig);
+	}
+	
+	@Bean
+    DataSource routingDataSource() {
+        ReplicationRoutingDataSource routingDataSource = new ReplicationRoutingDataSource();
+
+        Map<Object, Object> dataSourceMap = new HashMap<>();
+        dataSourceMap.put("write", writeOnlyDataSource());
+        dataSourceMap.put("read", readOnlyDataSource());
+        routingDataSource.setTargetDataSources(dataSourceMap);
+        routingDataSource.setDefaultTargetDataSource(writeOnlyDataSource());
+
+        return routingDataSource;
+    }
+	
+	/*
+	 * @Primary, điều này có nghĩa là nó sẽ được chọn làm DataSource mặc định nếu có nhiều DataSource bean trong ứng dụng
+	 * Trong Spring Framework, @Qualifier là một annotation được sử dụng để xác định rõ ràng bean nào nên được sử dụng trong trường hợp có nhiều bean cùng loại. Annotation này giúp Spring hiểu được bạn muốn inject bean nào khi có nhiều bean cùng loại được khai báo.
+	 */
+	@Primary
+    @Bean
+    @DependsOn({"writeOnlyDataSource", "readOnlyDataSource", "routingDataSource"})
+    DataSource dataSource() {
+        return new LazyConnectionDataSourceProxy(routingDataSource());
+    }
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {

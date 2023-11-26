@@ -1,9 +1,13 @@
 package com.truong.oauth.request;
 
+import javax.validation.constraints.NotNull;
+
 public class LoginRequest {
 	
+	@NotNull
 	private String username;
 	
+	@NotNull
 	private String password;
 
 	public String getUsername() {

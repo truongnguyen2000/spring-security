@@ -71,6 +71,26 @@ public class ApplicationPropertieConfig {
 
 	@Value("${hikaricp.maintainTimeStats}")
 	private String hikariCP_MaintainTimeStats;
+	
+	
+	
+	@Value("${spring.datasource.master.url}")
+	private String datasourceMasterUrl;
+
+	@Value("${spring.datasource.master.username}")
+	private String datasourceMasterUsername;
+
+	@Value("${spring.datasource.master.password}")
+	private String datasourceMasterPassword;
+	
+	@Value("${spring.datasource.slave.url}")
+	private String datasourceSlaveUrl;
+
+	@Value("${spring.datasource.slave.username}")
+	private String datasourceSlaveUsername;
+
+	@Value("${spring.datasource.slave.password}")
+	private String datasourceSlavePassword;
 
 	public int getOauthPort() {
 		return oauthPort;
@@ -246,6 +266,54 @@ public class ApplicationPropertieConfig {
 
 	public void setDriverClassname(String driverClassname) {
 		this.driverClassname = driverClassname;
+	}
+
+	public String getDatasourceMasterUrl() {
+		return datasourceMasterUrl;
+	}
+
+	public void setDatasourceMasterUrl(String datasourceMasterUrl) {
+		this.datasourceMasterUrl = datasourceMasterUrl;
+	}
+
+	public String getDatasourceMasterUsername() {
+		return datasourceMasterUsername;
+	}
+
+	public void setDatasourceMasterUsername(String datasourceMasterUsername) {
+		this.datasourceMasterUsername = datasourceMasterUsername;
+	}
+
+	public String getDatasourceMasterPassword() {
+		return datasourceMasterPassword;
+	}
+
+	public void setDatasourceMasterPassword(String datasourceMasterPassword) {
+		this.datasourceMasterPassword = datasourceMasterPassword;
+	}
+
+	public String getDatasourceSlaveUrl() {
+		return datasourceSlaveUrl;
+	}
+
+	public void setDatasourceSlaveUrl(String datasourceSlaveUrl) {
+		this.datasourceSlaveUrl = datasourceSlaveUrl;
+	}
+
+	public String getDatasourceSlaveUsername() {
+		return datasourceSlaveUsername;
+	}
+
+	public void setDatasourceSlaveUsername(String datasourceSlaveUsername) {
+		this.datasourceSlaveUsername = datasourceSlaveUsername;
+	}
+
+	public String getDatasourceSlavePassword() {
+		return datasourceSlavePassword;
+	}
+
+	public void setDatasourceSlavePassword(String datasourceSlavePassword) {
+		this.datasourceSlavePassword = datasourceSlavePassword;
 	}
 	
 	

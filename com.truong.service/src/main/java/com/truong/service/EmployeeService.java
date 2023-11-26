@@ -1,5 +1,6 @@
 package com.truong.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,5 +14,5 @@ public interface EmployeeService {
 	
 	Employee findByUsername(String username);
 	
-	List<Employee> findAll();
+	List<Employee> findAll() throws SQLException;
 }

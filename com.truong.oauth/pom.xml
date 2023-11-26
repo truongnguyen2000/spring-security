@@ -93,6 +93,12 @@
 		    <version>30.1-jre</version> <!-- Or the version you prefer -->
 		</dependency>
 
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.2.0.Final</version> <!-- Chọn phiên bản phù hợp -->
+		</dependency>
+
 
 
 	</dependencies>

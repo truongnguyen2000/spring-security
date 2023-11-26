@@ -43,12 +43,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     }
     
     @Bean
-    public TokenStore tokenStore() {
+    TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
     }
     
     @Bean
-    public TokenEnhancer tokenEnhancer() {
+    TokenEnhancer tokenEnhancer() {
         return new CustomTokenEnhancer();
     }
 

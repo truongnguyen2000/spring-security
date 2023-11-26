@@ -1,8 +1,13 @@
 package com.truong.service.impl;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Autowired
 	EmployeeDao dao;
+	
+	@Autowired
+	DataSource dataSource;
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -31,7 +39,21 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Employee> findAll() {
+	public List<Employee> findAll() throws SQLException {
+		Connection connection = dataSource.getConnection();
+
+		try {
+		    String currentDataSourceUrl = connection.getMetaData().getURL();
+		    System.out.print("API Request - Current DataSource URL: " + currentDataSourceUrl);
+		} catch (Exception e) {
+		    // Xử lý exception nếu cần
+		} finally {
+		    DataSourceUtils.releaseConnection(connection, dataSource);
+		}
+
+
+		
+		
 		return dao.findAll();
 	}
 

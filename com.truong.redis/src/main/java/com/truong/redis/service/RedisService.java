@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.cache.Cache;
 
 @Service
-public class RedisService {
+public class RedisService
+ {
 
 	@Autowired
 	private CacheManager cacheManager;

@@ -1,5 +1,7 @@
 package com.truong.oauth.controller;
 
+import java.sql.SQLException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +17,7 @@ import com.truong.oauth.response.EmployeeResponse;
 public class EmployeeController extends BaseController{
 
 	@GetMapping("")
-	public ResponseEntity<BaseResponse<Object>> getAll() throws CustomException {
+	public ResponseEntity<BaseResponse<Object>> getAll() throws CustomException, SQLException {
 		
 		BaseResponse<Object> response = new BaseResponse<>();
 		
