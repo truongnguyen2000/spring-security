@@ -3,6 +3,7 @@ package com.truong.oauth.response;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.truong.entity.AuthoritiesJson;
 import com.truong.entity.Employee;
 
 public class EmployeeResponse {
@@ -11,18 +12,26 @@ public class EmployeeResponse {
 	
 	private String username;
 	
-	private String authorities;
+	private List<AuthoritiesJson> authorities;
 
 	public EmployeeResponse() {}
 	
-	public EmployeeResponse(Employee employee) {
+	public EmployeeResponse(Employee employee) throws Exception {
 		this.id = employee.getId();
 		this.username = employee.getUsername();
-		this.authorities = employee.getAuthorities();
+		this.authorities = employee.getListAuthorities();
 	}
 	
 	public List<EmployeeResponse> mapToList(List<Employee> employees) {
-		return employees.stream().map(EmployeeResponse::new).collect(Collectors.toList());
+		return employees.stream().map(t -> {
+			try {
+				return new EmployeeResponse(t);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+		}).collect(Collectors.toList());
 	}
 	
 	public int getId() {
@@ -41,11 +50,11 @@ public class EmployeeResponse {
 		this.username = username;
 	}
 
-	public String getAuthorities() {
+	public List<AuthoritiesJson> getAuthorities() {
 		return authorities;
 	}
 
-	public void setAuthorities(String authorities) {
+	public void setAuthorities(List<AuthoritiesJson> authorities) {
 		this.authorities = authorities;
 	}
 	

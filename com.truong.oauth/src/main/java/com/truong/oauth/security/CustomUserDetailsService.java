@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.truong.entity.Employee;
-import com.truong.entity.MediiUser;
+import com.truong.entity.CustomUser;
 import com.truong.service.EmployeeService;
 
 @Component
@@ -27,7 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 
     @Override
-    public MediiUser loadUserByUsername(String username) throws UsernameNotFoundException {
+    public CustomUser loadUserByUsername(String username) throws UsernameNotFoundException {
     	
         Employee employee = employeeService.findByUsername(username);
         
@@ -44,7 +44,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
 
                 
-        MediiUser userDetails = new MediiUser(username, employee.getPassword(), (int) employee.getId(), "",
+        CustomUser userDetails = new CustomUser(username, employee.getPassword(), (int) employee.getId(), "",
 				"", authorities);
         
         return userDetails;

@@ -12,7 +12,7 @@ import com.truong.common.utils.Utils;
 
 
 
-@Entity(name = "Employee")
+@Entity
 @Table(name = "employees")
 public class Employee {
 	private static final long serialVersionUID = 1L;

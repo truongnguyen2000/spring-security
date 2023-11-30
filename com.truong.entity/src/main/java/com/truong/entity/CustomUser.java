@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.springframework.security.core.userdetails.User;
 
-public class MediiUser extends User {
+public class CustomUser extends User {
 
 	private static final long serialVersionUID = -3531439484732724601L;
 
@@ -13,7 +13,7 @@ public class MediiUser extends User {
 	private String email;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public MediiUser(String username, String password, int id, String phone, String email, Collection authorities) {
+	public CustomUser(String username, String password, int id, String phone, String email, Collection authorities) {
 		super(username, password, true, true, true, true, authorities);
 
 		this.setId(id);

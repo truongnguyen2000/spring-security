@@ -13,7 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.google.common.base.Strings;
 import com.truong.common.exception.CustomException;
 import com.truong.entity.Employee;
-import com.truong.entity.MediiUser;
+import com.truong.entity.CustomUser;
 import com.truong.service.EmployeeService;
 
 public class BaseController {
@@ -33,7 +33,7 @@ public class BaseController {
 		}
 		
 		OAuth2Authentication oauth2 = tokenStore.readAuthentication(token);
-		MediiUser user = (MediiUser) oauth2.getPrincipal();
+		CustomUser user = (CustomUser) oauth2.getPrincipal();
 		
 		Employee employee = employeeService.findOne(user.getId());
 		
